@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<a href="./index.html" target="_self">《返回</a>
+<h1>AMD/commonJs兼容写法</h1>
+
+<div class="file-name">模块定义</div>
+<pre>
+(function() {
+  var Obj = {
+    name: "DH",
+    say: function() {
+      alert("你好")
+    }
+  }
+  if (typeof module !== "undefined" && typeof exports === "object") {
+    module.exports = Obj;
+  } else if (typeof define === "function" && (define.amd || define.cmd)) {
+    define(function() {
+      return Obj;
+    });
+  } else {
+    this.Obj = Obj;
+  }
+}).call(this || (typeof window !== "undefined" ? window : global));
+</pre>
+
+<div class="file-name">config.js配置</div>
+<pre>
+require.config({　　　　
+  paths: {　　　　　　
+    "commonjs": "./assets/js/commonjs"
+  }
+});
+</pre>
+
+<div class="file-name">模块调用</div>
+<pre>
+requirejs(["commonjs"], function(o) {
+   alert(o.name);
+   o.say();
+});
+</pre>
+<body>
+<script src="./require.js" defer async="true" data-main="./assets/js/page3"></script>
+</body>
+</html>

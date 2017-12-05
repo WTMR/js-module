@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<a href="./index.html" target="_self">《返回</a>
+<h1>require.js兼容非AMD规范写法</h1>
+
+<div class="file-name">模块定义</div>
+<pre>
+function fn1() {
+  alert("我是fn1()")
+}
+
+function fn2() {
+  alert("我是fn2()")
+}
+</pre>
+
+<div class="file-name">config.js配置</div>
+<pre>
+require.config({　　　　
+  shim: {
+    "funs": {
+      init: function() {
+        return {
+          fn1: fn1,
+          fn2: fn2
+        }
+      }
+    }
+  }
+});
+</pre>
+
+<div class="file-name">模块调用</div>
+<pre>
+requirejs(["funs"], function(o) {
+   o.fn1();
+   o.fn2();
+});
+</pre>
+<body>
+<script src="./require.js" defer async="true" data-main="./assets/js/page2"></script>
+</body>
+</html>
