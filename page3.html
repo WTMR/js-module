@@ -16,7 +16,7 @@
   var Obj = {
     name: "DH",
     say: function() {
-      alert("你好")
+      console.log("你好")
     }
   }
   if (typeof module !== "undefined" && typeof exports === "object") {
@@ -43,7 +43,7 @@ require.config({　　　　
 <div class="file-name">模块调用</div>
 <pre>
 requirejs(["commonjs"], function(o) {
-   alert(o.name);
+   console.log(o.name);
    o.say();
 });
 </pre>
