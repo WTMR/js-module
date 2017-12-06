@@ -1,4 +1,5 @@
-# js-module
-js模块（AMD）兼容写法总结
+![](./demo.jpg)
 
-**[[DEMO]](https://denghao.me/demo/2017/js-module/)**
+只针对浏览器端require.js方式加载模块进行总结。
+
+**[[DEMO]](https://denghao.me/index.php/archives/amd.html)**
